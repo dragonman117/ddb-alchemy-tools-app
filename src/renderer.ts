@@ -1,31 +1,35 @@
-/**
- * This file will automatically be loaded by webpack and run in the "renderer" context.
- * To learn more about the differences between the "main" and the "renderer" context in
- * Electron, visit:
- *
- * https://electronjs.org/docs/latest/tutorial/process-model
- *
- * By default, Node.js integration in this file is disabled. When enabling Node.js integration
- * in a renderer process, please be aware of potential security implications. You can read
- * more about security risks here:
- *
- * https://electronjs.org/docs/tutorial/security
- *
- * To enable Node.js integration in this file, open up `main.js` and enable the `nodeIntegration`
- * flag:
- *
- * ```
- *  // Create the browser window.
- *  mainWindow = new BrowserWindow({
- *    width: 800,
- *    height: 600,
- *    webPreferences: {
- *      nodeIntegration: true
- *    }
- *  });
- * ```
- */
-
 import './index.css';
 
-console.log('👋 This message is being logged by "renderer.js", included via webpack');
+(async function(){
+    let callback: null | any = null;
+    const existingCobalt = await (window as any).electronApi.checkToken();
+    document.getElementById('getToken').addEventListener('click', async () => {
+        await (window as any).electronApi.getToken();
+        document.getElementById('dnd-beyond-login').style.display = 'none';
+        document.getElementById('monster-download').style.display = 'flex';
+    });
+    document.getElementById('fetch').addEventListener('click', async () => {
+        document.getElementById('loader').style.display = 'block';
+        callback = setTimeout(() => {
+            document.getElementById('error').style.display = 'block';
+        }, 30000)
+        const monsterUrl = (document.getElementById('monster') as HTMLInputElement).value;
+        const monsterId = monsterUrl.split("/").slice(-1)[0].split("-")[0];
+        const res = await (window as any).electronApi.fetchMonster(monsterId);
+        clearTimeout(callback);
+        callback = null;
+        document.getElementById('loader').style.display = 'none';
+        console.log(res);
+        //Download Result
+        const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(res));
+        const dlAnchorElem = document.getElementById('downloadAnchorElem');
+        dlAnchorElem.setAttribute("href",     dataStr     );
+        dlAnchorElem.setAttribute("download", `${res.name}-${monsterId}.json`);
+        dlAnchorElem.click();
+    });
+    if (existingCobalt) {
+        document.getElementById('monster-download').style.display = 'flex';
+    } else {
+        document.getElementById('dnd-beyond-login').style.display = 'flex';
+    }
+})();

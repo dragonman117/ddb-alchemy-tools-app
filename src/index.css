@@ -1,7 +1,111 @@
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
-    Arial, sans-serif;
-  margin: auto;
-  max-width: 38rem;
-  padding: 2rem;
+html,body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-content: stretch;
+    align-items: center;
+    background-color: #101011;
+    font-family: 'Roboto', sans-serif;
+}
+
+.bounding-box{
+    background-color: white;
+    border: 4px solid #8A6C3CFF;
+    padding: 25px;
+    width: 500px;
+    min-height: 300px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-content: stretch;
+    align-items: center;
+}
+
+#dnd-beyond-login{
+    display: none;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-content: stretch;
+    align-items: center;
+}
+
+#monster-download{
+    display: none;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-content: stretch;
+    align-items: center;
+}
+
+.button{
+    background-color: #e40712;
+    padding : 8px 12px;
+    cursor: pointer;
+    color: white;
+    box-shadow: -4px 7px 7px rgba(0, 0, 0, 0.3)  ;
+    -webkit-box-shadow: -4px 7px 7px rgba(0, 0, 0, 0.3)  ;
+    -moz-box-shadow: -4px 7px 7px rgba(0, 0, 0, 0.3)  ;
+}
+.button:active{
+    box-shadow: -4px 7px 7px rgba(0, 0, 0, 0.1)  ;
+    -webkit-box-shadow: -4px 7px 7px rgba(0, 0, 0, 0.1)  ;
+    -moz-box-shadow: -4px 7px 7px rgba(0, 0, 0, 0.1)  ;
+}
+
+#error{
+    display: none;
+    margin-top: 25px;
+}
+
+#loader{
+    display: none;
+}
+
+.lds-facebook {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+.lds-facebook div {
+    display: inline-block;
+    position: absolute;
+    left: 8px;
+    width: 16px;
+    background: #8b8b8b;
+    animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+.lds-facebook div:nth-child(1) {
+    left: 8px;
+    animation-delay: -0.24s;
+}
+.lds-facebook div:nth-child(2) {
+    left: 32px;
+    animation-delay: -0.12s;
+}
+.lds-facebook div:nth-child(3) {
+    left: 56px;
+    animation-delay: 0;
+}
+@keyframes lds-facebook {
+    0% {
+        top: 8px;
+        height: 64px;
+    }
+    50%, 100% {
+        top: 24px;
+        height: 32px;
+    }
 }
