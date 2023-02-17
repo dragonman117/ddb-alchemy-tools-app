@@ -1,4 +1,5 @@
 import './index.css';
+import {monsterParse} from "./shared/lib/monsterTools";
 
 (async function(){
     let callback: null | any = null;
@@ -18,13 +19,15 @@ import './index.css';
         const res = await (window as any).electronApi.fetchMonster(monsterId);
         clearTimeout(callback);
         callback = null;
-        document.getElementById('loader').style.display = 'none';
         console.log(res);
+        //parse
+        const parsed = monsterParse(res);
+        document.getElementById('loader').style.display = 'none';
         //Download Result
-        const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(res));
+        const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(parsed));
         const dlAnchorElem = document.getElementById('downloadAnchorElem');
         dlAnchorElem.setAttribute("href",     dataStr     );
-        dlAnchorElem.setAttribute("download", `${res.name}-${monsterId}.json`);
+        dlAnchorElem.setAttribute("download", `${parsed.name}-${monsterId}.json`);
         dlAnchorElem.click();
     });
     if (existingCobalt) {

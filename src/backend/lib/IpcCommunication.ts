@@ -2,7 +2,7 @@ import {createModalWindow} from "./windowTools";
 import store, {StoreKeys} from "./LocalStore";
 import {UrlTools} from "./urlTools";
 import {getAuth} from "./authTools";
-import {monsterParse, monsterTools} from "./monsterTools";
+import { monsterTools} from "../../shared/lib/monsterTools";
 
 
 export function registerIPCChannels(ipc: Electron.IpcMain, mainWindow: Electron.BrowserWindow) {
@@ -33,7 +33,7 @@ export function registerIPCChannels(ipc: Electron.IpcMain, mainWindow: Electron.
     });
 
     ipc.handle('monster', async (event, args) => {
-        console.log(args);
+        // console.log(args);
         const urlTools = new UrlTools();
         const token = await store.get(StoreKeys.jwtToken);
         if (!token) {
@@ -41,7 +41,10 @@ export function registerIPCChannels(ipc: Electron.IpcMain, mainWindow: Electron.
         }
         urlTools.setAuthToken(token as string);
         const fetchRes = await monsterTools(args, urlTools);
-        return monsterParse(fetchRes);
+        if (fetchRes == null){
+            return null;
+        }
+        return fetchRes;
     });
 }
 

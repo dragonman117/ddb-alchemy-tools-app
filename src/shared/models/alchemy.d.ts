@@ -36,17 +36,17 @@ export interface AlchemyCharacter {
     type: string,
 }
 
-interface AlchemyStat {
+export interface AlchemyStat {
     name: string,
     value: number,
 }
 
-interface AlchemyClass {
+export interface AlchemyClass {
     class: string,
     level: number,
 }
 
-interface AlchemyItem {
+export interface AlchemyItem {
     isEquipped: boolean,
     name: string,
     quantity: number,
@@ -78,7 +78,7 @@ export interface AlchemyDamageMod{
     condition: string,
 }
 
-interface AlchemySkill {
+export interface AlchemySkill {
     name: string,
     abilityName: string,
     proficient: boolean,
@@ -86,18 +86,18 @@ interface AlchemySkill {
     bonus?: number,
 }
 
-interface AlchemySpellSlot {
+export interface AlchemySpellSlot {
     max: number,
     remaining: number,
 }
 
-type AlchemySpell = AlchemySrdSpell | AlchemyCustomSpell
+export type AlchemySpell = AlchemySrdSpell | AlchemyCustomSpell
 
-interface AlchemySrdSpell {
+export interface AlchemySrdSpell {
     name: string,
 }
 
-interface AlchemyCustomSpell {
+export interface AlchemyCustomSpell {
     name: string,
     level: number,
     school: string,
@@ -118,19 +118,19 @@ interface AlchemyCustomSpell {
     canBeCastAsRitual?: boolean,
 }
 
-interface AlchemySpellAtHigherLevel {
+export interface AlchemySpellAtHigherLevel {
     applyAtLevels: number[],
     damage: AlchemyDamage,
     type: string,
 }
 
-interface AlchemyDamage {
+export interface AlchemyDamage {
     bonus?: number,
     dice: string,
     type: string,
 }
 
-interface AlchemySavingThrow {
+export interface AlchemySavingThrow {
     abilityName: "str" | "dex" | "con" | "int" | "wis" | "cha",
 }
 

@@ -1,4 +1,4 @@
-import {UrlTools} from "./urlTools";
+import {UrlTools} from "../../backend/lib/urlTools";
 import {
     ALIGNMENT, CONDITIONS, DAMAGE_IMMUNITIES, DAMAGE_IMMUNITIES_SPECIAL, DAMAGE_RESISTANCES, DAMAGE_RESISTANCES_SPECIAL,
     LANGUAGES,
@@ -19,7 +19,6 @@ import {
     AlchemyMovementMode,
     AlchemyProficiency,
     AlchemySense, AlchemyTextBlock, AlchemyTextBlockSection
-// eslint-disable-next-line import/no-unresolved
 } from "../models/alchemy";
 // @ts-ignore
 import TurndownService from "turndown";
@@ -45,11 +44,11 @@ export function monsterParse(source: MonsterData): AlchemyCharacter{
     if (source.lairDescription) {
         res.description += "\n\n## Lair\n" + turndown.turndown(source.lairDescription);
     }
-    res.proficiencyBonus = PROFICIENCY_BONUS[source.challengeRatingId].proficiencyBonus;
-    res.challengeRating = PROFICIENCY_BONUS[source.challengeRatingId].name;
-    res.abilityScores = source.stats.map((stat) => {
-        return {name: STATS[stat.statId], value: stat.value};
-    });
+     res.proficiencyBonus = PROFICIENCY_BONUS[source.challengeRatingId].proficiencyBonus;
+     res.challengeRating = PROFICIENCY_BONUS[source.challengeRatingId].name;
+     res.abilityScores = source.stats.map((stat) => {
+         return {name: STATS[stat.statId], value: stat.value};
+     });
     res.currentHp = source.averageHitPoints;
     res.hitDice = source.hitPointDice.diceString;
     res.maxHp = source.hitPointDice.diceCount * source.hitPointDice.diceValue + source.hitPointDice.fixedValue;
@@ -87,11 +86,11 @@ export function monsterParse(source: MonsterData): AlchemyCharacter{
     res.textBlocks = parseSpecialTraits(source.specialTraitsDescription);
 
     const actionSet = [
-        {prefix: "", actions: source.actionsDescription},
-        {prefix: "Reactions - ", actions: source.reactionsDescription},
-        {prefix: "Legendary Actions - ", actions: source.legendaryActionsDescription},
-        {prefix: "Mythic Actions - ", actions: source.mythicActionsDescription},
-        {prefix: "Bonus Actions - ", actions: source.bonusActionsDescription}
+        {prefix: "", actions: source?.actionsDescription},
+        {prefix: "Reactions - ", actions: source?.reactionsDescription},
+        {prefix: "Legendary Actions - ", actions: source?.legendaryActionsDescription},
+        {prefix: "Mythic Actions - ", actions: source?.mythicActionsDescription},
+        {prefix: "Bonus Actions - ", actions: source?.bonusActionsDescription}
     ];
 
     res.actions = [];

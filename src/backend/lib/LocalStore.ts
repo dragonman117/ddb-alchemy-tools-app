@@ -1,4 +1,4 @@
-import {IState} from "../models/state";
+import {IState} from "../../shared/models/state";
 import ElectronStore, {Schema} from "electron-store";
 
 const schema: Schema<IState> = {

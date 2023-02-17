@@ -7,12 +7,21 @@ import { WebpackPlugin } from '@electron-forge/plugin-webpack';
 
 import { mainConfig } from './webpack.main.config';
 import { rendererConfig } from './webpack.renderer.config';
+import * as path from "path";
 
 const config: ForgeConfig = {
-  packagerConfig: {},
+  packagerConfig: {
+    icon: './icons/toolsIcon',
+  },
   rebuildConfig: {},
   makers: [
-    new MakerSquirrel({}),
+    {
+        name: '@electron-forge/maker-squirrel',
+        config: {
+          iconUrl: path.join(__dirname, 'icons/toolsIcon.ico'),
+          setupIcon: './icons/toolsIcon.ico',
+        }
+    },
     new MakerZIP({}, ['darwin']),
     new MakerRpm({}),
     new MakerDeb({})

@@ -1,5 +1,5 @@
 import {UrlTools} from "./urlTools";
-import {GetTokenResponse} from "../models/authModels";
+import {GetTokenResponse} from "../../shared/models/authModels";
 import store, {StoreKeys} from "./LocalStore";
 
 export async function authTools(urlTool: UrlTools): Promise<any> {
