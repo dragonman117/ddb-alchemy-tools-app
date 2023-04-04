@@ -1,8 +1,7 @@
-import { UrlTools } from './urlTools'
+import { UrlTools } from './UrlTools'
 import store, { StoreKeys } from './LocalStore'
 import { GetTokenResponse } from '../models/AuthModels'
 import moment from 'moment'
-import { DatetimeFormat } from 'vue-i18n'
 
 export async function authTools(urlTool: UrlTools): Promise<any> {
   const [authUrl, authHeader] = urlTool.getAuthUrl()
