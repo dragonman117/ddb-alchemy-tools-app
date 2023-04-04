@@ -1,3 +1,33 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html, body{
+  @apply h-screen w-screen flex flex-col bg-stone-200 max-h-screen overflow-hidden;
+  overflow: hidden !important;
+}
+
+#app{
+  @apply flex grow;
+}
+
+.button{
+  @apply bg-red-800 text-stone-50 p-2 flex content-center place-content-center hover:bg-red-900 drop-shadow-md cursor-pointer select-none;
+  user-select: none;
+}
+
+.tooltip-right{
+  @apply invisible absolute left-full top-1/2 z-10 ml-2 w-20 -translate-y-1/2 rounded bg-stone-800 p-2 text-xs
+  text-white opacity-0 transition-all before:invisible before:absolute before:top-1/2 before:right-full before:z-10
+  before:ml-2 before:-mt-2 before:border-y-8 before:border-r-8 before:border-y-transparent before:border-r-stone-800
+  before:opacity-0 before:transition-all before:content-[''] group-hover:visible group-hover:block group-hover:opacity-100
+  group-hover:before:visible group-hover:before:opacity-100;
+}
+
+.tooltip {
+  @apply invisible absolute;
+}
+
+.has-tooltip:hover .tooltip {
+  @apply visible z-50
+}

@@ -5,9 +5,10 @@
     "second-desc": "You have moved to the second screen! There is nothing here!"
   },
   "title": {
-    "main": "Main Screen",
+    "monster": "Fetch Monsters",
     "second": "Second Screen",
-    "error": "Unknown Error"
+    "error": "Unknown Error",
+    "login": "Login"
   },
   "menu": {
     "change-theme": "Change Theme",

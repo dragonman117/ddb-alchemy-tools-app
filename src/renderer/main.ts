@@ -14,6 +14,17 @@ declare global {
   }
 }
 
+router.beforeEach(async (to, from, next) => {
+  const token = await window.mainApi.send('checkToken');
+  if (token !== undefined && token !== null && token.length > 0){
+    next();
+  } else if (to.path !== '/login') {
+    next('/login');
+  }else{
+    next();
+  }
+});
+
 const app = createApp(App)
 
 app.use(vuetify).use(i18n).use(router).use(createPinia())

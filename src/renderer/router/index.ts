@@ -1,14 +1,14 @@
 import { createRouter, createWebHashHistory } from 'vue-router/dist/vue-router.esm-bundler'
-import { MainScreen, ErrorScreen, SecondScreen } from '@/renderer/screens'
+import { ErrorScreen, SecondScreen, LoginScreen, MonsterFetch } from "@/renderer/screens";
 
 export default createRouter({
   history: createWebHashHistory(),
   routes: [
     {
       path: '/',
-      component: MainScreen,
+      component: MonsterFetch,
       meta: {
-        titleKey: 'title.main'
+        titleKey: 'title.monster'
       }
     },
     {
@@ -16,6 +16,13 @@ export default createRouter({
       component: SecondScreen,
       meta: {
         titleKey: 'title.second'
+      }
+    },
+    {
+      path: '/login',
+      component: LoginScreen,
+      meta: {
+        titleKey: 'title.login'
       }
     },
     {

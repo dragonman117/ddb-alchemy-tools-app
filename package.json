@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "electron-store": "^8.1.0",
+    "moment": "^2.29.4",
     "node-html-parser": "^6.1.5",
     "pinia": "^2.0.32",
     "turndown": "^7.1.1",

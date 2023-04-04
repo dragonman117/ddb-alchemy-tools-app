@@ -2,18 +2,19 @@ import { contextBridge, ipcRenderer } from 'electron'
 
 // Whitelist of valid channels used for IPC communication (Send message from Renderer to Main)
 const mainAvailChannels: string[] = [
-  'msgRequestGetVersion',
-  'msgOpenExternalLink',
   'getCobaltToken',
   'checkToken',
-  'monsterFetch'
+  'monsterFetch',
+  'monsterSearch'
 ]
 const rendererAvailChannels: string[] = ['msgReceivedVersion']
 
 contextBridge.exposeInMainWorld('mainApi', {
-  send: (channel: string, ...data: any[]): void => {
+  send: async (channel: string, ...data: any[]) => {
     if (mainAvailChannels.includes(channel)) {
-      ipcRenderer.send.apply(null, [channel, ...data])
+      // const res = ipcRenderer.send.apply(null, [channel, ...data])
+      const res = await ipcRenderer.invoke(channel, ...data)
+      return res;
     } else {
       throw new Error(`Send failed: Unknown ipc channel name: ${channel}`)
     }
