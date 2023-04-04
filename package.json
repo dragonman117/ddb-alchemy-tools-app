@@ -1,55 +1,74 @@
 {
   "name": "ddb-alchemy-tools-app",
-  "productName": "ddb-alchemy-tools-app",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A tool to assist in converting D&D beyond content to Alchemy VTT content",
-  "main": ".webpack/main",
-  "scripts": {
-    "start": "electron-forge start",
-    "package": "electron-forge package",
-    "make": "electron-forge make",
-    "publish": "electron-forge publish",
-    "lint": "eslint --ext .ts,.tsx ."
-  },
-  "keywords": [],
-  "author": {
-    "name": "TJ Ferrell",
-    "email": "tj.ferrell@gmail.com"
-  },
+  "author": "TJ Ferrell <tj.ferrell@gmail.com>",
   "license": "MIT",
-  "devDependencies": {
-    "@electron-forge/cli": "^6.0.5",
-    "@electron-forge/maker-deb": "^6.0.5",
-    "@electron-forge/maker-rpm": "^6.0.5",
-    "@electron-forge/maker-squirrel": "^6.0.5",
-    "@electron-forge/maker-zip": "^6.0.5",
-    "@electron-forge/plugin-webpack": "^6.0.5",
-    "@types/turndown": "^5.0.1",
-    "@typescript-eslint/eslint-plugin": "^5.0.0",
-    "@typescript-eslint/parser": "^5.0.0",
-    "@vercel/webpack-asset-relocator-loader": "1.7.3",
-    "electron": "23.0.0",
-    "eslint": "^8.0.1",
-    "eslint-plugin-import": "^2.25.0",
-    "fork-ts-checker-webpack-plugin": "^7.2.13",
-    "node-loader": "^2.0.0",
-    "postcss-loader": "^7.0.2",
-    "tailwindcss": "^3.2.6",
-    "ts-loader": "^9.2.2",
-    "ts-node": "^10.0.0",
-    "typescript": "~4.5.4"
+  "main": "dist/main/index.js",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dragonman117/ddb-alchemy-tools-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dragonman117/ddb-alchemy-tools-app/issues"
+  },
+  "scripts": {
+    "dev": "vite",
+    "dev:debug": "vite -d",
+    "dev:debug:force": "vite -d --force",
+    "build": "npm run build:pre && electron-builder -wml",
+    "build:pre": "npm run format:fix && vue-tsc --noEmit && vite build",
+    "build:dir": "npm run build:pre && electron-builder --dir",
+    "build:mac": "npm run build:pre && CSC_IDENTITY_AUTO_DISCOVERY=false electron-builder --mac",
+    "build:linux": "npm run build:pre && electron-builder --linux",
+    "build:win": "npm run build:pre && electron-builder --windows",
+    "lint": "eslint --ext .js,.ts,.vue -f ./node_modules/eslint-friendly-formatter src",
+    "lint:fix": "eslint --ext .js,.ts,.vue -f ./node_modules/eslint-friendly-formatter --fix src",
+    "format": "prettier .",
+    "format:fix": "prettier . --write"
+  },
+  "engines": {
+    "node": ">=16.0.0"
   },
   "dependencies": {
-    "css-loader": "^6.7.3",
-    "electron-squirrel-startup": "^1.0.0",
     "electron-store": "^8.1.0",
-    "express": "^4.18.2",
-    "node-fetch": "^3.3.0",
-    "node-html-parser": "^6.1.4",
-    "postcss-preset-env": "^8.0.1",
-    "style-loader": "^3.3.1",
+    "moment": "^2.29.4",
+    "node-html-parser": "^6.1.5",
+    "pinia": "^2.0.32",
     "turndown": "^7.1.1",
     "vue": "^3.2.47",
-    "vue-router": "^4.1.6"
+    "vue-i18n": "^9.2.2",
+    "vue-router": "^4.1.6",
+    "vuetify": "^3.1.7"
+  },
+  "devDependencies": {
+    "@mdi/font": "^7.1.96",
+    "@typescript-eslint/eslint-plugin": "^5.54.0",
+    "@typescript-eslint/parser": "^5.54.0",
+    "@vitejs/plugin-vue": "^4.0.0",
+    "@vitejs/plugin-vue-jsx": "^3.0.0",
+    "autoprefixer": "^10.4.14",
+    "electron": "^23.1.1",
+    "electron-builder": "^23.3.3",
+    "eslint": "^8.35.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-friendly-formatter": "^4.0.1",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.6.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-vue": "^9.9.0",
+    "postcss": "^8.4.21",
+    "prettier": "^2.8.4",
+    "tailwindcss": "^3.2.7",
+    "typescript": "^4.9.5",
+    "vite": "^4.1.4",
+    "vite-plugin-electron": "^0.11.1",
+    "vite-plugin-electron-renderer": "^0.12.1",
+    "vite-plugin-eslint": "^1.8.1",
+    "vite-plugin-vuetify": "^1.0.2",
+    "vue-eslint-parser": "^9.1.0",
+    "vue-tsc": "^1.2.0"
   }
 }
