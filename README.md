@@ -23,8 +23,11 @@ If you wish to run this from source, please follow the steps below.
 ## Todo List
 
 - [ ] Clean Up Tech Debt (code is a little messy)
-- [ ] Improve UI (would like to integrate Vue rather than bare js)
-- [ ] Add Icon
+- [x] Improve UI (would like to integrate Vue rather than bare js)
+- [x] Add Icon
 - [ ] Add Linux Installer
 - [ ] Add automated build/deploy pipeline
 - [ ] Add in place update functionality
+- [ ] Ad ability to import spells
+- [ ] Add ability to import items
+- [ ] Add ability to import magical items

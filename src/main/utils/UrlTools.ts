@@ -31,7 +31,7 @@ export class UrlTools {
     return [`${this.monsterBaseUrl}?ids=${encodeURI(id)}`, header]
   }
 
-  public getMonsterSearchUrl (skip: number, take: number, search: string){
+  public getMonsterSearchUrl(skip: number, take: number, search: string) {
     const header = {
       Authorization: `Bearer ${this.authToken}`
     }

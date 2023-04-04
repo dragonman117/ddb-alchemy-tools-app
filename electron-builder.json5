@@ -1,6 +1,6 @@
 {
-  productName: 'Vutron',
-  appId: 'com.vutron.vutron',
+  productName: 'DDB Alchemy Tools App',
+  appId: 'com.dragonman117.ddb-alchemy-tools-app',
   asar: true,
   extends: null,
   compression: 'maximum',
@@ -23,7 +23,7 @@
     bundleVersion: '1.0',
     hardenedRuntime: true,
     gatekeeperAssess: false,
-    icon: 'buildAssets/icons/icon.icns',
+    icon: 'buildAssets/icons/BeyondToAlchemy.icns',
     type: 'distribution',
     target: [
       {
@@ -49,7 +49,7 @@
     sign: false
   },
   win: {
-    icon: 'buildAssets/icons/icon.ico',
+    icon: 'buildAssets/icons/BeyondToAlchemy.ico',
     target: [
       {
         target: 'appx',
@@ -76,7 +76,7 @@
     oneClick: true
   },
   linux: {
-    executableName: 'vutron',
+    executableName: 'DDB Alchemy Tools App',
     icon: 'buildAssets/icons',
     category: 'Utility',
     target: [

@@ -1,10 +1,7 @@
-<script setup lang="tsx">
-</script>
+<script setup lang="tsx"></script>
 
 <template>
   <router-view />
 </template>
 
-<style>
-
-</style>
+<style></style>

@@ -9,7 +9,7 @@ const schema: Schema<IState> = {
     type: 'string'
   },
   jwtDateTime: {
-    type: 'string',
+    type: 'string'
   }
 }
 
