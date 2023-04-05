@@ -73,7 +73,12 @@ export default class IPCs {
     ipcMain.handle('monsterFetch', async (event, args) => {
       // eslint-disable-next-line no-unused-vars
       const urlTools = new UrlTools()
-      const token = await getAndCheckAuthToken()
+      let token: null | string = null
+      try {
+        token = await getAndCheckAuthToken()
+      } catch (err) {
+        return
+      }
       urlTools.setAuthToken(token as string)
       const fetchRes = await monsterFetch(args, urlTools)
       if (fetchRes == null) {
@@ -85,7 +90,12 @@ export default class IPCs {
     // Search Monsters with paging
     ipcMain.handle('monsterSearch', async (event, args) => {
       const urlTools = new UrlTools()
-      const token = await getAndCheckAuthToken()
+      let token: null | string = null
+      try {
+        token = await getAndCheckAuthToken()
+      } catch (err) {
+        return
+      }
       urlTools.setAuthToken(token as string)
       return await bulkMonsterFetch(args[1], args[2], args[0], urlTools)
     })
