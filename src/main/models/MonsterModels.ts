@@ -363,168 +363,168 @@ export const DAMAGE_RESISTANCES_SPECIAL: { [key: number]: AlchemyDamageMod[] } =
 export const SKILLS = {
   2: {
     skill: 'str',
-    name: 'Athletics',
+    name: 'Athletics'
   },
   3: {
     skill: 'dex',
-    name: 'Acrobatics',
+    name: 'Acrobatics'
   },
   4: {
     skill: 'dex',
-    name: 'Sleight of Hand',
+    name: 'Sleight of Hand'
   },
   5: {
     skill: 'dex',
-    name: 'Stealth',
+    name: 'Stealth'
   },
   6: {
     skill: 'int',
-    name: 'Arcana',
+    name: 'Arcana'
   },
   7: {
     skill: 'int',
-    name: 'History',
+    name: 'History'
   },
   8: {
     skill: 'int',
-    name: 'Investigation',
+    name: 'Investigation'
   },
   9: {
     skill: 'int',
-    name: 'Nature',
+    name: 'Nature'
   },
   10: {
     skill: 'int',
-    name: 'Religion',
+    name: 'Religion'
   },
   11: {
     skill: 'wis',
-    name: 'Animal Handling',
+    name: 'Animal Handling'
   },
   12: {
     skill: 'wis',
-    name: 'Insight',
+    name: 'Insight'
   },
   13: {
     skill: 'wis',
-    name: 'Medicine',
+    name: 'Medicine'
   },
   14: {
     skill: 'wis',
-    name: 'Perception',
+    name: 'Perception'
   },
   15: {
     skill: 'wis',
-    name: 'Survival',
+    name: 'Survival'
   },
   16: {
     skill: 'cha',
-    name: 'Deception',
+    name: 'Deception'
   },
   17: {
     skill: 'cha',
-    name: 'Intimidation',
+    name: 'Intimidation'
   },
   18: {
     skill: 'cha',
-    name: 'Performance',
+    name: 'Performance'
   },
   19: {
     skill: 'cha',
-    name: 'Persuasion',
+    name: 'Persuasion'
   }
 }
 
 export const SKILLSSAVEARRAY = {
   3: {
-    "abilityName": "dex",
-    "name": "Acrobatics",
-    "proficient": false
+    abilityName: 'dex',
+    name: 'Acrobatics',
+    proficient: false
   },
   11: {
-    "abilityName": "wis",
-    "name": "Animal Handling",
-    "proficient": false
+    abilityName: 'wis',
+    name: 'Animal Handling',
+    proficient: false
   },
   6: {
-    "abilityName": "int",
-    "name": "Arcana",
-    "proficient": false
+    abilityName: 'int',
+    name: 'Arcana',
+    proficient: false
   },
   2: {
-    "abilityName": "str",
-    "name": "Athletics",
-    "proficient": false
+    abilityName: 'str',
+    name: 'Athletics',
+    proficient: false
   },
   16: {
-    "abilityName": "cha",
-    "name": "Deception",
-    "proficient": false
+    abilityName: 'cha',
+    name: 'Deception',
+    proficient: false
   },
   7: {
-    "abilityName": "int",
-    "name": "History",
-    "proficient": false
+    abilityName: 'int',
+    name: 'History',
+    proficient: false
   },
   12: {
-    "abilityName": "wis",
-    "name": "Insight",
-    "proficient": false
+    abilityName: 'wis',
+    name: 'Insight',
+    proficient: false
   },
   17: {
-    "abilityName": "cha",
-    "name": "Intimidation",
-    "proficient": false
+    abilityName: 'cha',
+    name: 'Intimidation',
+    proficient: false
   },
   8: {
-    "abilityName": "int",
-    "name": "Investigation",
-    "proficient": false
+    abilityName: 'int',
+    name: 'Investigation',
+    proficient: false
   },
   13: {
-    "abilityName": "wis",
-    "name": "Medicine",
-    "proficient": false
+    abilityName: 'wis',
+    name: 'Medicine',
+    proficient: false
   },
   9: {
-    "abilityName": "int",
-    "name": "Nature",
-    "proficient": false
+    abilityName: 'int',
+    name: 'Nature',
+    proficient: false
   },
   14: {
-    "abilityName": "wis",
-    "name": "Perception",
-    "proficient": false
+    abilityName: 'wis',
+    name: 'Perception',
+    proficient: false
   },
   18: {
-    "abilityName": "cha",
-    "name": "Performance",
-    "proficient": false
+    abilityName: 'cha',
+    name: 'Performance',
+    proficient: false
   },
   19: {
-    "abilityName": "cha",
-    "name": "Persuasion",
-    "proficient": false
+    abilityName: 'cha',
+    name: 'Persuasion',
+    proficient: false
   },
   10: {
-    "abilityName": "int",
-    "name": "Religion",
-    "proficient": false
+    abilityName: 'int',
+    name: 'Religion',
+    proficient: false
   },
   4: {
-    "abilityName": "dex",
-    "name": "Sleight of Hand",
-    "proficient": false
+    abilityName: 'dex',
+    name: 'Sleight of Hand',
+    proficient: false
   },
   5: {
-    "abilityName": "dex",
-    "name": "Stealth",
-    "proficient": false
+    abilityName: 'dex',
+    name: 'Stealth',
+    proficient: false
   },
   15: {
-    "abilityName": "wis",
-    "name": "Survival",
-    "proficient": false
+    abilityName: 'wis',
+    name: 'Survival',
+    proficient: false
   }
 }
 
@@ -557,7 +557,7 @@ export const STATBONUSMAP = {
   26: 8,
   27: 8,
   28: 9,
-  30: 9,
+  30: 9
 }
 
 export interface MonsterData {

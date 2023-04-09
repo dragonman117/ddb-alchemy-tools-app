@@ -19,7 +19,7 @@ export default class IPCs {
     ipcMain.handle('getCobaltToken', (event, args) => {
       const win = createModalWindow(
         'https://www.dndbeyond.com/sign-in?returnUrl=https://www.dndbeyond.com/',
-        window,
+        window
       )
       return new Promise<void>((resolve) => {
         const dndBeyond = /^https:\/\/www.dndbeyond.com/
@@ -48,12 +48,12 @@ export default class IPCs {
           win.close()
           resolve()
         }
-        win.once('ready-to-show', async (event, url ) => {
+        win.once('ready-to-show', async (event, url) => {
           if (win.webContents.getURL() === 'https://www.dndbeyond.com/') {
             await checkToken()
-            return;
+            return
           }
-          win.show();
+          win.show()
         })
         win.webContents.on('will-navigate', async (event, url) => {
           if (dndBeyond.test(url)) {
