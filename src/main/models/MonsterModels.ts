@@ -22,11 +22,11 @@ export const STATSFULL: { [key: number]: string } = {
 }
 
 export const MOVEMENT: { [key: number]: string } = {
-  1: 'walk',
-  2: 'burrow',
-  3: 'climb',
-  4: 'fly',
-  5: 'swim'
+  1: 'Walking',
+  2: 'Burrow',
+  3: 'Climb',
+  4: 'Fly',
+  5: 'Swim'
 }
 
 export const ALIGNMENT: { [key: number]: string } = {
@@ -59,30 +59,30 @@ export const ALIGNMENT: { [key: number]: string } = {
 }
 
 export const SIZE: { [key: number]: string } = {
-  2: 'tiny',
-  3: 'small',
-  4: 'medium',
-  5: 'large',
-  6: 'huge',
-  7: 'gargantuan',
-  10: 'medium or small'
+  2: 'Tiny',
+  3: 'Small',
+  4: 'Medium',
+  5: 'Large',
+  6: 'Huge',
+  7: 'Gargantuan',
+  10: 'Medium'
 }
 
 export const MONSTER_TYPE: { [key: number]: string } = {
-  1: 'aberration',
-  2: 'beasts',
-  3: 'celestials',
-  4: 'constructs',
-  6: 'dragons',
-  7: 'elementals',
-  8: 'fey',
-  9: 'fiends',
-  10: 'giant',
-  11: 'humanoids',
-  13: 'monstrosities',
-  14: 'oozes',
-  15: 'plants',
-  16: 'undead'
+  1: 'Aberration',
+  2: 'Beasts',
+  3: 'Celestial',
+  4: 'Construct',
+  6: 'Dragon',
+  7: 'Elemental',
+  8: 'Fey',
+  9: 'Fiend',
+  10: 'Giant',
+  11: 'Humanoid',
+  13: 'Monstrosity',
+  14: 'Ooze',
+  15: 'Plant',
+  16: 'Undead'
 }
 
 export const SENSES: { [key: number]: string } = {
@@ -358,6 +358,206 @@ export const DAMAGE_RESISTANCES_SPECIAL: { [key: number]: AlchemyDamageMod[] } =
     { condition: 'Stoneskin', damageType: 'Piercing' },
     { condition: 'Stoneskin', damageType: 'Slashing' }
   ]
+}
+
+export const SKILLS = {
+  2: {
+    skill: 'str',
+    name: 'Athletics',
+  },
+  3: {
+    skill: 'dex',
+    name: 'Acrobatics',
+  },
+  4: {
+    skill: 'dex',
+    name: 'Sleight of Hand',
+  },
+  5: {
+    skill: 'dex',
+    name: 'Stealth',
+  },
+  6: {
+    skill: 'int',
+    name: 'Arcana',
+  },
+  7: {
+    skill: 'int',
+    name: 'History',
+  },
+  8: {
+    skill: 'int',
+    name: 'Investigation',
+  },
+  9: {
+    skill: 'int',
+    name: 'Nature',
+  },
+  10: {
+    skill: 'int',
+    name: 'Religion',
+  },
+  11: {
+    skill: 'wis',
+    name: 'Animal Handling',
+  },
+  12: {
+    skill: 'wis',
+    name: 'Insight',
+  },
+  13: {
+    skill: 'wis',
+    name: 'Medicine',
+  },
+  14: {
+    skill: 'wis',
+    name: 'Perception',
+  },
+  15: {
+    skill: 'wis',
+    name: 'Survival',
+  },
+  16: {
+    skill: 'cha',
+    name: 'Deception',
+  },
+  17: {
+    skill: 'cha',
+    name: 'Intimidation',
+  },
+  18: {
+    skill: 'cha',
+    name: 'Performance',
+  },
+  19: {
+    skill: 'cha',
+    name: 'Persuasion',
+  }
+}
+
+export const SKILLSSAVEARRAY = {
+  3: {
+    "abilityName": "dex",
+    "name": "Acrobatics",
+    "proficient": false
+  },
+  11: {
+    "abilityName": "wis",
+    "name": "Animal Handling",
+    "proficient": false
+  },
+  6: {
+    "abilityName": "int",
+    "name": "Arcana",
+    "proficient": false
+  },
+  2: {
+    "abilityName": "str",
+    "name": "Athletics",
+    "proficient": false
+  },
+  16: {
+    "abilityName": "cha",
+    "name": "Deception",
+    "proficient": false
+  },
+  7: {
+    "abilityName": "int",
+    "name": "History",
+    "proficient": false
+  },
+  12: {
+    "abilityName": "wis",
+    "name": "Insight",
+    "proficient": false
+  },
+  17: {
+    "abilityName": "cha",
+    "name": "Intimidation",
+    "proficient": false
+  },
+  8: {
+    "abilityName": "int",
+    "name": "Investigation",
+    "proficient": false
+  },
+  13: {
+    "abilityName": "wis",
+    "name": "Medicine",
+    "proficient": false
+  },
+  9: {
+    "abilityName": "int",
+    "name": "Nature",
+    "proficient": false
+  },
+  14: {
+    "abilityName": "wis",
+    "name": "Perception",
+    "proficient": false
+  },
+  18: {
+    "abilityName": "cha",
+    "name": "Performance",
+    "proficient": false
+  },
+  19: {
+    "abilityName": "cha",
+    "name": "Persuasion",
+    "proficient": false
+  },
+  10: {
+    "abilityName": "int",
+    "name": "Religion",
+    "proficient": false
+  },
+  4: {
+    "abilityName": "dex",
+    "name": "Sleight of Hand",
+    "proficient": false
+  },
+  5: {
+    "abilityName": "dex",
+    "name": "Stealth",
+    "proficient": false
+  },
+  15: {
+    "abilityName": "wis",
+    "name": "Survival",
+    "proficient": false
+  }
+}
+
+export const STATBONUSMAP = {
+  1: -5,
+  2: -4,
+  3: -4,
+  4: -3,
+  5: -3,
+  6: -2,
+  7: -2,
+  8: -1,
+  9: -1,
+  10: 0,
+  11: 0,
+  12: 1,
+  13: 1,
+  14: 2,
+  15: 2,
+  16: 3,
+  17: 3,
+  18: 4,
+  19: 4,
+  20: 5,
+  21: 5,
+  22: 6,
+  23: 6,
+  24: 7,
+  25: 7,
+  26: 8,
+  27: 8,
+  28: 9,
+  30: 9,
 }
 
 export interface MonsterData {

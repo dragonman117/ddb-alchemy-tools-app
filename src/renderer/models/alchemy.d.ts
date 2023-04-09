@@ -33,6 +33,7 @@ export interface AlchemyCharacter {
   spellSlots: AlchemySpellSlot[]
   spells: AlchemySpell[]
   textBlocks: AlchemyTextBlockSection[]
+  trackers: AlchemyTracker[]
   type: string
 }
 
@@ -84,6 +85,14 @@ export interface AlchemySkill {
   proficient: boolean
   doubleProficiency?: boolean
   bonus?: number
+}
+
+export interface AlchemyTracker {
+  "color": string,
+  "max": number,
+  "name": string,
+  "type": string,
+  "value": number
 }
 
 export interface AlchemySpellSlot {

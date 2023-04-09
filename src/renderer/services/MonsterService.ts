@@ -11,10 +11,10 @@ import {
   MOVEMENT,
   PROFICIENCY_BONUS,
   SENSES,
-  SIZE,
+  SIZE, SKILLS, SKILLSSAVEARRAY, STATBONUSMAP,
   STATS,
   STATSFULL
-} from '@/main/models/MonsterModels'
+} from "@/main/models/MonsterModels";
 import {
   AlchemyActionStepDamage,
   AlchemyAttack,
@@ -23,21 +23,19 @@ import {
   AlchemyDamageMod,
   AlchemyMovementMode,
   AlchemyProficiency,
-  AlchemySense,
+  AlchemySense, AlchemySkill,
   AlchemyTextBlock,
-  AlchemyTextBlockSection
-} from '@/renderer/models/alchemy'
+  AlchemyTextBlockSection, AlchemyTracker
+} from "@/renderer/models/alchemy";
 import TurndownService from 'turndown'
 import parse, { Node } from 'node-html-parser'
 
 export function monsterParse(source: MonsterData): AlchemyCharacter {
-  console.log(source)
   const res = {} as AlchemyCharacter
   const turndown = new TurndownService()
   res.name = source.name
   res.isNPC = true
-  res.race = 'Monster'
-  res.systemKey = '5e'
+  res.race = 'NPC'
   res.exp = PROFICIENCY_BONUS[source.challengeRatingId].xp
   res.description = turndown.turndown(source.characteristicsDescription ?? '')
   if (source.lairDescription) {
@@ -45,23 +43,55 @@ export function monsterParse(source: MonsterData): AlchemyCharacter {
   }
   res.proficiencyBonus = PROFICIENCY_BONUS[source.challengeRatingId].proficiencyBonus
   res.challengeRating = PROFICIENCY_BONUS[source.challengeRatingId].name
+  const abilityScoreMap = {
+    "str": 0,
+    "dex": 0,
+    "con": 0,
+    "int": 0,
+    "wis": 0,
+    "cha":0,
+  };
   res.abilityScores = source.stats.map((stat) => {
+    abilityScoreMap[STATS[stat.statId].toLowerCase()] = STATBONUSMAP[stat.value];
     return { name: STATS[stat.statId], value: stat.value }
   })
+  const hpTracker = {
+    "color": "Green",
+    "max": source.averageHitPoints,
+    "name": "HP",
+    "type": "Bar",
+    "value": source.averageHitPoints
+  } as AlchemyTracker;
+  const expTracker = {
+    "color": "Yellow",
+    "max": 355000,
+    "name": "XP",
+    "type": "Bar",
+    "value": 0
+  } as AlchemyTracker;
+  res.trackers = [hpTracker, expTracker]
+  res.hitDice = source.hitPointDice.diceString.replaceAll(' ', '');
   res.currentHp = source.averageHitPoints
-  res.hitDice = source.hitPointDice.diceString
-  res.maxHp =
-    source.hitPointDice.diceCount * source.hitPointDice.diceValue + source.hitPointDice.fixedValue
+  res.maxHp = source.averageHitPoints
   res.alignment = ALIGNMENT[source.alignmentId]
   res.armorClass = source.armorClass
   res.size = SIZE[source.sizeId]
-  console.log(source.movements)
-  res.speed = source.movements.filter((movement) => movement.movementId === 1)[0].speed
   res.senses = source.senses.map((sense) => {
     return { name: SENSES[sense.senseId], distance: parseInt(sense.notes, 10) } as AlchemySense
   })
+  const skillsDict = JSON.parse(JSON.stringify(SKILLSSAVEARRAY))
+  source.skills.map((skill) => {
+    skillsDict[skill.skillId] = {
+      abilityName: (SKILLS[skill.skillId].skill).charAt(0).toUpperCase(),
+      name: SKILLS[skill.skillId].name,
+      proficient: true,
+      bonus: skill.value - res.proficiencyBonus - abilityScoreMap[SKILLS[skill.skillId].skill.toLowerCase()]
+    } as AlchemySkill
+  });
+  res.skills = Object.values(skillsDict)
   res.type = MONSTER_TYPE[source.typeId]
   res.movementModes = source.movements.map((movement) => {
+    if (movement.movementId === 1) res.speed = movement.speed;
     return { mode: MOVEMENT[movement.movementId], distance: movement.speed } as AlchemyMovementMode
   })
   res.imageUri = source.avatarUrl
