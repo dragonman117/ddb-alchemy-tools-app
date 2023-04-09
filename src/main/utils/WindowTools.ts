@@ -7,7 +7,8 @@ export const createModalWindow = (url: string, parent: BrowserWindow): BrowserWi
     width: 800,
     parent: parent,
     modal: true,
-    autoHideMenuBar: true
+    autoHideMenuBar: true,
+    show: false
   })
 
   // and load the index.html of the app.

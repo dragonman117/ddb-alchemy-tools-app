@@ -222,8 +222,11 @@ export default defineComponent({
     },
     async addMonsterFromUrl() {
       const monsterId = this.monster_url.split('/').slice(-1)[0].split('-')[0]
-      // const raw: MonsterData = (await (window as any).electronApi.fetchMonster(monsterId)) as MonsterData;
       const raw: MonsterData = await window.mainApi.send('monsterFetch', monsterId)
+      if (raw === null || raw === undefined) {
+        this.$router.push('/login')
+        return
+      }
       this.selectedMonsters.push(raw)
       this.monster_url = ''
     },
@@ -231,6 +234,10 @@ export default defineComponent({
       this.searchedMonsters = []
       this.loading = true
       const res = await window.mainApi.send('monsterSearch', [this.search_url, 0, 50])
+      if (res === null || res === undefined) {
+        this.$router.push('/login')
+        return
+      }
       this.loading = false
       this.searchedMonsters = res.data
       this.pagination = res.pagination
@@ -246,6 +253,10 @@ export default defineComponent({
         50,
         true
       ])
+      if (res === null || res === undefined) {
+        this.$router.push('/login')
+        return
+      }
       this.loading = false
       this.searchedMonsters = res.data
       this.current_page = pg
@@ -255,6 +266,10 @@ export default defineComponent({
       const parsed = await Promise.all(
         this.selectedMonsters.map(async (x) => {
           const monster = (await window.mainApi.send('monsterFetch', x.id)) as MonsterData
+          if (monster === null || monster === undefined) {
+            this.$router.push('/login')
+            return
+          }
           return monsterParse(monster)
         })
       )

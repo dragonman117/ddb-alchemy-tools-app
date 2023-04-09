@@ -15,6 +15,10 @@ export async function getAuth(): Promise<any> {
   const cobalt = await store.get(StoreKeys.cobaltToken)
   urlTool.setCobaltToken(cobalt as string)
   const raw = await authTools(urlTool)
+  if (raw.token == null) {
+    await store.set(StoreKeys.cobaltToken, null)
+    throw new Error('No token found')
+  }
   await store.set(StoreKeys.jwtToken, raw.token)
   await store.set(StoreKeys.jwtDateTime, moment().format())
 }
