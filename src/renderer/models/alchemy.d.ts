@@ -88,11 +88,11 @@ export interface AlchemySkill {
 }
 
 export interface AlchemyTracker {
-  "color": string,
-  "max": number,
-  "name": string,
-  "type": string,
-  "value": number
+  color: string
+  max: number
+  name: string
+  type: string
+  value: number
 }
 
 export interface AlchemySpellSlot {
