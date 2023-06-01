@@ -10,13 +10,17 @@ const schema: Schema<IState> = {
   },
   jwtDateTime: {
     type: 'string'
+  },
+  alchemyToken: {
+    type: 'string'
   }
 }
 
 export const StoreKeys = {
   cobaltToken: 'cobaltToken',
   jwtToken: 'jwtToken',
-  jwtDateTime: 'jwtDateTime'
+  jwtDateTime: 'jwtDateTime',
+  alchemyToken: 'alchemyToken'
 }
 
 const store = new ElectronStore<IState>({ schema })

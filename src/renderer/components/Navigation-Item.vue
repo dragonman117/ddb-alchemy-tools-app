@@ -3,7 +3,7 @@
     class="relative overflow-hidden cursor-pointer group hover:overflow-visible focus-visible:outline-none h-14 hover:bg-stone-800"
     :to="link as string"
   >
-    <div class="p-1">
+    <div class="p-2 flex flex-column content-center items-center">
       <svg
         width="100%"
         height="100%"
@@ -48,6 +48,8 @@ export default defineComponent({
 <style scoped>
 svg {
   @apply fill-stone-50;
+  width: 70%;
+  height: 70%;
 }
 .router-link-active {
   @apply border-l-4 border-red-900;

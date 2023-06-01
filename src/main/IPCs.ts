@@ -5,6 +5,7 @@ import { UrlTools } from './utils/UrlTools'
 import { getAndCheckAuthToken } from './utils/AuthTools'
 import { bulkMonsterFetch, monsterFetch } from './utils/MonsterFetch'
 import { MonsterData } from '@/main/models/MonsterModels'
+import { AlchemyUser } from "@/main/models/AlchemyModels";
 
 function delay(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms))
@@ -70,9 +71,48 @@ export default class IPCs {
       })
     })
 
+    ipcMain.handle('getAlchemyToken', (event, args) => {
+      const win = createModalWindow('https://app.alchemyrpg.com/', window)
+      return new Promise<void> ((resolve) => {
+        const checkToken = async () => {
+          try{
+            const token = JSON.parse(await win.webContents.executeJavaScript('localStorage.getItem("user")')) as AlchemyUser;
+            if (token !== undefined  && token !== null){
+              await store.set(StoreKeys.alchemyToken, token.token);
+            }
+          } catch (e){
+            console.log(e)
+          }
+        }
+        win.on('ready-to-show', async (event, url) => {
+          await checkToken()
+          win.show()
+          resolve()
+        })
+        win.webContents.on('will-navigate', async (event, url) =>{
+          await checkToken()
+          resolve()
+        });
+        // @ts-ignore
+        win.on('close', async (event, url) => {
+          win.hide()
+          await checkToken();
+          resolve()
+        });
+      })
+    });
+
     // Check the cobalt token
     ipcMain.handle('checkToken', (event, args) => {
       const token = store.get(StoreKeys.cobaltToken)
+      if (token) {
+        return token
+      }
+      return null
+    })
+
+    ipcMain.handle('checkAlchemyToken', (event, args) => {
+      const token = store.get(StoreKeys.alchemyToken)
       if (token) {
         return token
       }

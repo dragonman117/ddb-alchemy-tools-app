@@ -14,9 +14,14 @@ declare global {
   }
 }
 
+function checkToken(token: string){
+  return (token !== undefined && token !== null && token.length > 0)
+}
+
 router.beforeEach(async (to, from, next) => {
   const token = await window.mainApi.send('checkToken')
-  if (token !== undefined && token !== null && token.length > 0) {
+  const alchemyToken = await window.mainApi.send('checkAlchemyToken')
+  if (checkToken(token) && checkToken(alchemyToken)){
     next()
   } else if (to.path !== '/login') {
     next('/login')

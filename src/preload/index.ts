@@ -5,7 +5,9 @@ const mainAvailChannels: string[] = [
   'getCobaltToken',
   'checkToken',
   'monsterFetch',
-  'monsterSearch'
+  'monsterSearch',
+  'getAlchemyToken',
+  'checkAlchemyToken'
 ]
 const rendererAvailChannels: string[] = ['msgReceivedVersion']
 
