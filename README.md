@@ -25,7 +25,7 @@ If you wish to run this from source, please follow the steps below.
 - [ ] Clean Up Tech Debt (code is a little messy)
 - [x] Improve UI (would like to integrate Vue rather than bare js)
 - [x] Add Icon
-- [ ] Add Linux Installer
+- [x] Add Linux Installer
 - [ ] Add automated build/deploy pipeline
 - [ ] Add in place update functionality
 - [ ] Ad ability to import spells
