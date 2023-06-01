@@ -5,7 +5,7 @@
     <img class="absolute -left-4 w-24 h-24 rounded-full shadow-lg" :src="monster.avatarUrl" />
     <div class="w-20"> </div>
     <div class="p-4 grow">
-      {{ monster.name }}
+      {{ monster.name }} <span class="legacy" v-if="monster.isLegacy">Legacy</span>
     </div>
     <div class="p-2 row-item">
       <div v-if="showAdd" class="button" @click="$emit('add')">
@@ -60,5 +60,8 @@ export default defineComponent({
 .row-item {
   min-height: 56px;
   height: 56px;
+}
+.legacy {
+  @apply text-red-800 text-xs bg-stone-300 p-1 drop-shadow-sm rounded-sm;
 }
 </style>
